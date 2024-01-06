@@ -1,0 +1,22 @@
+@mixin mediaQuery($width: $break-sm) {
+    @media screen and (min-width: $width) {
+        @content;
+    }
+}
+
+@mixin flexBox($justify: space-between, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin btnFormat($pad: 1.2rem 2rem, $bRadius:40px) {
+    padding: $pad;
+    border-radius: $bRadius;
+}
+
+@mixin textFormat($height: 1.8, $size: 3.5rem, $weight: 600) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+}

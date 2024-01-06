@@ -1,0 +1,634 @@
+.header {
+    box-shadow: 0 0 2px lightgray;
+    .container {
+        padding: 1.5rem 3rem;
+    }
+    &__wrapper {
+        @include flexBox;
+        .branding {
+            flex-grow: .5;
+            img {
+                width: 8rem;
+            }
+        }
+        .signup__error__bg {
+            background: rgba(0, 0, 0, 0.562);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: 0.5s ease;
+            &.open {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        .signup__error__msg {
+            position: absolute;
+            height: 40%;
+            width: 50%;
+            top: 30%;
+            left: 25%;
+            background: $clr-light;
+            @include flexBox();
+            flex-direction: column;
+            z-index: 1;
+            border-radius: 30px;
+            .error__title {
+                padding: 2rem;
+                background: $clr-dark;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                text-align: center;
+                h1 {
+                    font-size: 2rem;
+                    color: $clr-silver;
+                    font-weight: 600;
+                }
+            }
+            .error__msg {
+                p {
+                    font-weight: 600;
+                    margin: 0 0 1rem 0;
+                }
+            }
+            .error__btn {
+                margin: 0 0 3rem;
+                cursor: pointer;
+                p {
+                    @include btnFormat(0.5rem 1.5rem);
+                    background: $clr-dark;
+                    font-size: 1.3rem;
+                    color: $clr-silver;
+                }
+            }
+        }
+        .signup__success__bg {
+            background: rgba(0, 0, 0, 0.562);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: 0.5s ease;
+            &.open {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        .signup__success__msg {
+            position: absolute;
+            height: 40%;
+            width: 50%;
+            top: 30%;
+            left: 25%;
+            background: $clr-light;
+            @include flexBox();
+            flex-direction: column;
+            z-index: 1;
+            border-radius: 30px;
+            .success__title {
+                padding: 2rem;
+                background: $clr-dark;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                text-align: center;
+                h1 {
+                    font-size: 2rem;
+                    color: $clr-silver;
+                    font-weight: 600;
+                }
+            }
+            .success__msg {
+                p {
+                    font-weight: 600;
+                    margin: 0 0 1rem 0;
+                }
+            }
+            .signup__success__btn {
+                margin: 0 0 3rem;
+                cursor: pointer;
+                p {
+                    @include btnFormat(0.5rem 1.5rem);
+                    background: $clr-dark;
+                    font-size: 1.3rem;
+                    color: $clr-silver;
+                }
+            }
+        }
+        .login__error__bg {
+            background: rgba(0, 0, 0, 0.562);
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: 0.5s ease;
+            &.open {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        .login__error__msg {
+            position: absolute;
+            height: 40%;
+            width: 50%;
+            top: 30%;
+            left: 25%;
+            background: $clr-light;
+            @include flexBox();
+            flex-direction: column;
+            z-index: 1;
+            border-radius: 30px;
+            .login__title {
+                padding: 2rem;
+                background: $clr-dark;
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                text-align: center;
+                h1 {
+                    font-size: 2rem;
+                    color: $clr-silver;
+                    font-weight: 600;
+                }
+            }
+            .login__error__text {
+                p {
+                    font-weight: 600;
+                    margin: 0 0 1rem 0;
+                }
+            }
+            .login__error__btn {
+                margin: 0 0 3rem;
+                cursor: pointer;
+                p {
+                    @include btnFormat(0.5rem 1.5rem);
+                    background: $clr-dark;
+                    font-size: 1.3rem;
+                    color: $clr-silver;
+                }
+            }
+        }
+        .header__login {
+            order: 1;
+            padding: 0.5rem 0.9rem;
+            background: $clr-dark;
+            border-radius: 50%;
+            i {
+                color: $clr-silver;
+            }
+        }
+        .header__loggedin {
+            order: 2;
+            button {
+                font-family: 'Cabin', sans-serif;
+                color: $clr-silver;
+                background: transparent;
+                padding: 0.7rem 1.5rem;
+                background: $clr-dark;
+                border-radius: 10px;
+                border: none;
+                font-size: 1.5rem;
+            }
+        }
+        .login__window__bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.708);
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s ease;
+            &.open {
+                visibility: visible;
+                opacity: 1;
+            }
+            .login__window {
+                position: absolute;
+                border-radius: 30px;
+                z-index: 1;
+                top: 10%;
+                left: 10%;
+                height: 80vh;
+                width: 80%;
+                background: $clr-light;
+                transform: scale(0);
+                transition: 0.5s ease;
+                backface-visibility: hidden;
+                &.open {
+                    transform: scale(1);
+                }
+                &.rotate {
+                    transform: rotateY(180deg);
+                }
+                .login__title {
+                    padding: 1rem 2rem;
+                    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.256));
+                    background: $clr-dark;
+                    border-radius: 30px 30px 0 0;
+                    width: 100%;
+                    text-align: center;
+                    color: $clr-silver;
+                    h1 {
+                        @include textFormat(1.8, 3rem);
+                    }
+                }
+                .login__body {
+                    padding: 1rem 2rem;
+                    @include flexBox(flex-start, flex-start);
+                    flex-direction: column;
+                    gap: 2rem;
+                    .login__opening__msg {
+                        h2 {
+                            @include textFormat(1.8, 2.8rem);
+                        }
+                    }
+                    form {
+                        @include flexBox(center, flex-start);
+                        flex-direction: column;
+                        gap: 1.5rem;
+                        width: 100%;
+                        margin: 0 0 5rem 0;
+                        input {
+                            width: 50%;
+                            border: none;
+                            outline: none;
+                            padding: 1rem;
+                            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.256));
+                            border-radius: 10px;
+                        }
+                        input.sbmt {
+                            width: unset;
+                            width: 30%;
+                            margin: 2rem 0 0 0;
+                            background: $clr-dark;
+                            color: $clr-silver;
+                            filter: unset;
+                            cursor: pointer;
+                            transition: 0.5s ease;
+                            &:hover {
+                                background: transparent;
+                                color: $clr-dark;
+                                transform: scale(1.1)
+                            }
+                        }
+                    }
+                    .login__signup {
+                        @include flexBox(center, flex-start);
+                        gap: 1rem;
+                        flex-direction: column;
+                        .signup__question {
+                            p {
+                                font-size: 1.7rem;
+                            }
+                        }
+                        .signup__btn {
+                            display: flex;
+                            span {
+                                @include flexBox(center);
+                                gap: 1rem;
+                                @include btnFormat(1rem 2.5rem, 10px);
+                                background: $clr-dark;
+                                font-size: 1.4rem;
+                                color: $clr-silver;
+                                transition: 0.5s ease;
+                                cursor: pointer;
+                                &:hover {
+                                    background: transparent;
+                                    color: $clr-dark;
+                                    transform: scale(1.1)
+                                }
+                            }
+                        }
+                    }
+                    .login__closeBtn {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.2rem;
+                        background: $clr-dark;
+                        padding: 1rem 0.75rem;
+                        border-radius: 50%;
+                        transition: 0.5s ease;
+                        align-self: center;
+                        margin: 3rem 0 0 0;
+                        cursor: pointer;
+                        &:hover {
+                            background: transparent;
+                            span {
+                                background-color: $clr-dark;
+                            }
+                        }
+                        span {
+                            background-color: $clr-silver;
+                            width: 1.5rem;
+                            height: 0.2rem;
+                            transition: 0.5s ease;
+                            &:nth-child(1) {
+                                transform: translate(0, 4px) rotate(45deg);
+                            }
+                            &:nth-child(2) {
+                                opacity: 0;
+                            }
+                            &:nth-child(3) {
+                                transform: translate(0, -4px) rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+            }
+            .signup__window {
+                position: absolute;
+                border-radius: 30px;
+                z-index: 1;
+                top: 10%;
+                left: 10%;
+                height: 80vh;
+                width: 80%;
+                background: $clr-light;
+                transition: 0.5s ease;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                &.rotate {
+                    transform: rotateY(0deg);
+                }
+                .signup__title {
+                    padding: 1rem 2rem;
+                    background: $clr-dark;
+                    border-radius: 30px 30px 0 0;
+                    width: 100%;
+                    text-align: center;
+                    color: $clr-silver;
+                    h1 {
+                        @include textFormat(1.8, 3rem);
+                    }
+                }
+                .signup__body {
+                    padding: 1rem 2rem;
+                    @include flexBox(flex-start, center);
+                    flex-direction: column;
+                    gap: 2rem;
+                    .signup__opening__msg {
+                        h2 {
+                            @include textFormat(1.8, 2.8rem);
+                        }
+                    }
+                    form {
+                        @include flexBox(center);
+                        flex-wrap: wrap;
+                        gap: 1.5rem;
+                        width: 100%;
+                        input {
+                            width: 70%;
+                            border: none;
+                            outline: none;
+                            padding: 1rem;
+                            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.256));
+                            border-radius: 10px;
+                        }
+                        input.sbmt {
+                            width: 50%;
+                            margin: 2rem 0 0 0;
+                            background: $clr-dark;
+                            color: $clr-silver;
+                            filter: unset;
+                            cursor: pointer;
+                            transition: 0.5s ease;
+                            &:hover {
+                                background: transparent;
+                                color: $clr-dark;
+                                transform: scale(1.1)
+                            }
+                        }
+                    }
+                    .signup__closeBtn {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.2rem;
+                        background: $clr-dark;
+                        padding: 1rem 0.75rem;
+                        border-radius: 50%;
+                        transition: 0.5s ease;
+                        cursor: pointer;
+                        transition: 0.5s ease;
+                        &:hover {
+                            background: transparent;
+                            span {
+                                background-color: $clr-dark;
+                            }
+                        }
+                        span {
+                            background-color: $clr-silver;
+                            width: 1.5rem;
+                            height: 0.2rem;
+                            transition: 0.5s ease;
+                            &:nth-child(1) {
+                                transform: translate(0, 4px) rotate(45deg);
+                            }
+                            &:nth-child(2) {
+                                opacity: 0;
+                            }
+                            &:nth-child(3) {
+                                transform: translate(0, -4px) rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .header__nav {
+            width: 50%;
+            .header__preview {
+                @include btnFormat;
+                background: $clr-frenchgray;
+                @include flexBox(flex-start);
+                gap: 1.5rem;
+                cursor: pointer;
+                transition: 0.5s ease;
+                &:hover {
+                    background: $clr-dark;
+                    .header__preview__icon i {
+                        color: $clr-silver;
+                    }
+                    .header__preview__texts {
+                        h3 {
+                            color: $clr-silver;
+                        }
+                        span {
+                            color: $clr-silver;
+                        }
+                    }
+                }
+                .header__preview__icon {
+                    i {
+                        transition: 0.5s ease;
+                        font-size: 2rem;
+                        color: $clr-dark;
+                    }
+                }
+                .header__preview__texts {
+                    line-height: 1.1;
+                    h3 {
+                        transition: 0.5s ease;
+                        font-size: 1.4rem;
+                        color: $clr-dark;
+                    }
+                    span {
+                        transition: 0.5s ease;
+                        font-size: 1.2rem;
+                        color: $clr-dark;
+                    }
+                }
+            }
+            .header__view__bg {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.708);
+                visibility: hidden;
+                opacity: 0;
+                transition: 0.5s ease;
+                z-index: 1;
+                &.open {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                .header__view {
+                    position: absolute;
+                    width: 95%;
+                    max-height: 95%;
+                    transform: scale(0);
+                    height: 100%;
+                    overflow: hidden;
+                    transition: 0.5s ease;
+                    left: 2.5%;
+                    top: 2.5%;
+                    background: $clr-light;
+                    display: flex;
+                    z-index: 999;
+                    border-radius: 30px;
+                    &.open {
+                        transform: scale(1);
+                    }
+                    .header__view__bg {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        background: black;
+                    }
+                    .header__view__wrapper {
+                        padding: 5rem 0;
+                        @include flexBox(unset);
+                        flex-direction: column;
+                        gap: 2rem;
+                        width: 100%;
+                        .header__close__btn {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.2rem;
+                            background: $clr-dark;
+                            padding: 1rem 0.75rem;
+                            border-radius: 50%;
+                            transition: 0.5s ease;
+                            &:hover {
+                                background: transparent;
+                                span {
+                                    background-color: $clr-dark;
+                                }
+                            }
+                            span {
+                                background-color: $clr-silver;
+                                width: 1.5rem;
+                                height: 0.2rem;
+                                transition: 0.5s ease;
+                                &:nth-child(1) {
+                                    transform: translate(0, 4px) rotate(45deg);
+                                }
+                                &:nth-child(2) {
+                                    opacity: 0;
+                                }
+                                &:nth-child(3) {
+                                    transform: translate(0, -4px) rotate(-45deg);
+                                }
+                            }
+                        }
+                        .header__bar {
+                            width: 95%;
+                            margin: 0 auto;
+                            @include flexBox;
+                            padding: 1.5rem;
+                            border-radius: 10px;
+                            background: $clr-light;
+                            font-size: 1.4rem;
+                            filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.214));
+                            h1 {
+                                color: $clr-dark;
+                            }
+                            a {
+                                color: $clr-dark;
+                                font-weight: 600;
+                            }
+                        }
+                        #where {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: 1rem;
+                            h1 {
+                                font-size: 2.2rem;
+                                font-weight: 600;
+                            }
+                            .header__search__where {
+                                @include flexBox;
+                                font-size: 1.6rem;
+                                font-weight: 600;
+                                width: 100%;
+                                gap: 1rem;
+                                @include btnFormat;
+                                padding: 2rem;
+                                border-radius: 10px;
+                                background: $clr-light;
+                                
+                                i {
+                                    color: $clr-dark;
+                                }
+                                input {
+                                    width: 100%;
+                                    outline: none;
+                                    border: none;
+                                    background: $clr-light;
+                                    color: $clr-dark;
+                                }
+                            }
+                        }
+                        .header__search__btn {
+                            @include btnFormat;
+                            background: $clr-dark;
+                            border-radius: 15px;
+                            color: $clr-light;
+                            padding: 1.5rem 3rem;
+                            margin: 4rem 0 0;
+                            gap: 0.7rem;
+                            transition: 0.5s ease;
+                            &:hover {
+                                transform: scale(1.05);
+                            }
+                            a {
+                                @include flexBox(center);
+                                gap: 1rem;
+                                color: $clr-silver;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
